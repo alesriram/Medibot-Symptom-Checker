@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MediBot – Admin Panel</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/botfav.jpg') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='medibot.css') }}">
+  <style>
+    .admin-layout { display: grid; grid-template-columns: 240px 1fr; min-height: calc(100vh - 64px); }
+    @media(max-width:900px){ .admin-layout{ grid-template-columns:1fr } .admin-sidebar{ display:none } }
+
+    .admin-sidebar { background: white; border-right: 1px solid var(--border); padding: 24px 0; }
+    .sidebar-section-label { font-size: 0.7rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.8px; padding: 12px 20px 4px; }
+    .sidebar-link { display: flex; align-items: center; gap: 10px; padding: 10px 20px; font-size: 0.88rem; font-weight: 500; color: var(--text-muted); text-decoration: none; transition: all .15s; border-left: 3px solid transparent; }
+    .sidebar-link:hover { background: var(--bg); color: var(--primary); }
+    .sidebar-link.active { background: #f0fdfa; color: var(--primary); border-left-color: var(--primary); font-weight: 600; }
+    .sidebar-link i { width: 18px; text-align: center; }
+
+    .admin-content { padding: 28px; overflow-y: auto; }
+    .page-section { display: none; }
+    .page-section.active { display: block; }
+
+    .admin-stat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 24px; }
+    .admin-stat { background: white; border-radius: 14px; padding: 18px; border: 1px solid var(--border); box-shadow: var(--card-shadow); }
+    .admin-stat .label { font-size: 0.75rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .admin-stat .value { font-family: 'Poppins',sans-serif; font-size: 1.7rem; font-weight: 800; color: var(--primary); }
+    .admin-stat .sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 2px; }
+
+    .data-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+    .data-table th { background: var(--bg); padding: 10px 14px; text-align: left; font-size: 0.76rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; border-bottom: 1px solid var(--border); }
+    .data-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .data-table tr:hover td { background: var(--bg); }
+    .data-table tr:last-child td { border-bottom: none; }
+    .table-wrap { overflow-x: auto; }
+
+    .search-bar { display: flex; gap: 10px; margin-bottom: 16px; }
+    .search-bar input { flex: 1; }
+
+    .tag-badge { display: inline-block; background: #f0fdfa; border: 1px solid #99f6e4; color: var(--primary); border-radius: 6px; padding: 2px 8px; font-size: 0.76rem; font-weight: 600; }
+    .action-btn { width: 30px; height: 30px; border-radius: 7px; border: none; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; font-size: 0.8rem; transition: all .15s; }
+    .edit-btn   { background: #eff6ff; color: #2563eb; }
+    .edit-btn:hover   { background: #dbeafe; }
+    .delete-btn { background: #fef2f2; color: #dc2626; }
+    .delete-btn:hover { background: #fee2e2; }
+
+    .form-section-title { font-family:'Poppins',sans-serif; font-weight:700; font-size:1rem; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border); color:var(--text); display:flex;align-items:center;gap:8px; }
+
+    .bar-wrap { margin-top: 8px; }
+    .bar-item { margin-bottom: 10px; }
+    .bar-label { display: flex; justify-content: space-between; font-size: 0.78rem; margin-bottom: 4px; font-weight: 500; }
+    .bar-track { background: var(--bg); border-radius: 4px; height: 8px; overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 4px; background: var(--primary); transition: width 1s ease; }
+
+    /* Page transition overlay */
+    #page-overlay { position:fixed; inset:0; background:#fff; opacity:0; pointer-events:none; transition:opacity .3s ease; z-index:9999; }
+    #page-overlay.fade-out { opacity:1; pointer-events:all; }
+  </style>
+</head>
+<body>
+
+<!-- Page transition overlay -->
+<div id="page-overlay"></div>
+
+<!-- Navbar -->
+<nav class="mb-navbar">
+  <a class="mb-navbar-brand" href="/">
+    <div class="brand-icon"><i class="fas fa-stethoscope"></i></div>
+    MediBot
+  </a>
+  <ul class="mb-nav-links">
+    <li><a href="/"><i class="fas fa-home"></i> Home</a></li>
+    <li><a href="/about"><i class="fas fa-users"></i> About</a></li>
+    <li><a href="/login" class="active"><i class="fas fa-lock"></i> Admin</a></li>
+    <li><a href="#" onclick="doLogout()" class="nav-cta"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+  </ul>
+</nav>
+
+<div class="admin-layout">
+
+  <!-- Sidebar -->
+  <div class="admin-sidebar">
+    <div style="padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:12px">
+      <div style="display:flex;align-items:center;gap:10px">
+        <div class="mb-avatar" style="width:40px;height:40px;font-size:1rem;background:var(--primary)">
+          <i class="fas fa-user-shield"></i>
+        </div>
+        <div>
+          <div style="font-weight:700;font-size:0.9rem" id="adminName">{{ username }}</div>
+          <div style="font-size:0.74rem;color:var(--text-muted)">Administrator</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">Dashboard</div>
+    <a href="#" class="sidebar-link active" onclick="showSection('dashboard',this)"><i class="fas fa-chart-bar"></i> Overview</a>
+
+    <div class="sidebar-section-label">Dataset</div>
+    <a href="#" class="sidebar-link" onclick="showSection('diseases',this)"><i class="fas fa-virus"></i> Diseases</a>
+    <a href="#" class="sidebar-link" onclick="showSection('addDisease',this)"><i class="fas fa-plus-circle"></i> Add Disease</a>
+
+    <div class="sidebar-section-label">Locations</div>
+    <a href="#" class="sidebar-link" onclick="showSection('hospitals',this)"><i class="fas fa-hospital"></i> Hospitals</a>
+    <a href="#" class="sidebar-link" onclick="showSection('addHospital',this)"><i class="fas fa-map-marker-alt"></i> Add Hospital</a>
+
+    <div class="sidebar-section-label">Users</div>
+    <a href="#" class="sidebar-link" onclick="showSection('users',this)"><i class="fas fa-users"></i> Registered Users</a>
+
+    <div class="sidebar-section-label">System</div>
+    <a href="#" class="sidebar-link" onclick="showSection('settings',this)"><i class="fas fa-cog"></i> Settings</a>
+    <a href="/" class="sidebar-link"><i class="fas fa-external-link-alt"></i> View Site</a>
+    <a href="#" class="sidebar-link" style="color:#ef4444" onclick="doLogout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <!-- Content -->
+  <div class="admin-content">
+
+    <!-- ── Dashboard ── -->
+    <div id="sec-dashboard" class="page-section active">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px">
+        <i class="fas fa-chart-bar me-2" style="color:var(--primary)"></i>Dashboard Overview
+      </h4>
+      <div class="admin-stat-grid">
+        <div class="admin-stat">
+          <div class="label">Total Diseases</div>
+          <div class="value">86+</div>
+          <div class="sub">In intents.json</div>
+        </div>
+        <div class="admin-stat">
+          <div class="label">Training Patterns</div>
+          <div class="value">2100+</div>
+          <div class="sub">Symptom examples</div>
+        </div>
+        <div class="admin-stat">
+          <div class="label">Avg Patterns</div>
+          <div class="value">23.3</div>
+          <div class="sub">Per disease</div>
+        </div>
+        <div class="admin-stat">
+          <div class="label">Registered Users</div>
+          <div class="value" id="statUsers">0</div>
+          <div class="sub">Sign-ups</div>
+        </div>
+        <div class="admin-stat">
+          <div class="label">Model Status</div>
+          <div class="value" style="font-size:1rem;color:#22c55e">✅ Active</div>
+          <div class="sub">BiLSTM 2-layer</div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px">
+        <div class="mb-card">
+          <div class="mb-card-header">
+            <i class="fas fa-chart-line" style="color:var(--primary)"></i>
+            <strong style="font-size:0.9rem">Top Symptom Categories</strong>
+          </div>
+          <div class="mb-card-body">
+            <div class="bar-wrap">
+              <div class="bar-item"><div class="bar-label"><span>Respiratory</span><span>18%</span></div><div class="bar-track"><div class="bar-fill" style="width:18%"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Infectious</span><span>25%</span></div><div class="bar-track"><div class="bar-fill" style="width:25%;background:#0891b2"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Metabolic</span><span>12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#7c3aed"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Musculoskeletal</span><span>10%</span></div><div class="bar-track"><div class="bar-fill" style="width:10%;background:#d97706"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Skin</span><span>9%</span></div><div class="bar-track"><div class="bar-fill" style="width:9%;background:#db2777"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Cardiovascular</span><span>8%</span></div><div class="bar-track"><div class="bar-fill" style="width:8%;background:#ef4444"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Mental Health</span><span>6%</span></div><div class="bar-track"><div class="bar-fill" style="width:6%;background:#8b5cf6"></div></div></div>
+              <div class="bar-item"><div class="bar-label"><span>Others</span><span>12%</span></div><div class="bar-track"><div class="bar-fill" style="width:12%;background:#64748b"></div></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="mb-card">
+          <div class="mb-card-header"><i class="fas fa-info-circle" style="color:var(--primary)"></i><strong style="font-size:0.9rem">System Info</strong></div>
+          <div class="mb-card-body" style="font-size:0.85rem">
+            <table style="width:100%;border-collapse:collapse">
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Model Type</td><td style="font-weight:600">BiLSTM (2 layers)</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Hidden Size</td><td style="font-weight:600">256 units</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Framework</td><td style="font-weight:600">PyTorch + Flask</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Dataset Size</td><td style="font-weight:600">2100+ patterns</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Confidence Threshold</td><td style="font-weight:600">70% (diseases)</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Version</td><td style="font-weight:600">2.0 (Fixed)</td></tr>
+            </table>
+            <div class="mb-alert mb-alert-info" style="margin-top:12px">
+              <i class="fas fa-info-circle"></i>
+              <span>Retrain model after making changes to the dataset.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Diseases table ── -->
+    <div id="sec-diseases" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-virus me-2" style="color:var(--primary)"></i>Disease Dataset</h4>
+      <div class="search-bar">
+        <input type="text" class="mb-input" id="diseaseSearch" placeholder="🔍 Search diseases…" oninput="filterDiseases()">
+        <button class="mb-btn mb-btn-primary" onclick="showSection('addDisease', document.querySelector('[onclick*=addDisease]'))">
+          <i class="fas fa-plus"></i> Add New
+        </button>
+      </div>
+      <div class="mb-card">
+        <div class="table-wrap">
+          <table class="data-table" id="diseasesTable">
+            <thead><tr><th>#</th><th>Disease Name</th><th>Patterns</th><th>Has Precaution</th><th>Actions</th></tr></thead>
+            <tbody id="diseasesTbody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Add Disease ── -->
+    <div id="sec-addDisease" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-plus-circle me-2" style="color:var(--primary)"></i>Add / Update Disease</h4>
+      <div class="mb-card">
+        <div class="mb-card-body">
+          <div class="form-section-title"><i class="fas fa-tag"></i> Disease Information</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="mb-form-group">
+              <label class="mb-label">Disease Tag (Name)</label>
+              <input type="text" class="mb-input" id="dTag" placeholder="e.g. Malaria">
+            </div>
+            <div class="mb-form-group">
+              <label class="mb-label">Category</label>
+              <select class="mb-select mb-input" id="dCat">
+                <option>Infectious</option><option>Respiratory</option><option>Metabolic</option>
+                <option>Cardiovascular</option><option>Musculoskeletal</option><option>Skin</option>
+                <option>Mental Health</option><option>Neurological</option><option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="mb-form-group">
+            <label class="mb-label">Symptom Patterns (one per line)</label>
+            <textarea class="mb-input mb-textarea" id="dPatterns" rows="5" placeholder="I have high fever with chills and sweating&#10;fever with joint pain and headache&#10;malaria symptoms with vomiting"></textarea>
+            <div style="font-size:0.76rem;color:var(--text-muted);margin-top:4px">Add 8–15 natural language sentences for best accuracy.</div>
+          </div>
+          <div class="mb-form-group">
+            <label class="mb-label">Response / Description</label>
+            <textarea class="mb-input mb-textarea" id="dResponse" rows="3" placeholder="Disease description and recommended actions…"></textarea>
+          </div>
+          <div class="mb-form-group">
+            <label class="mb-label">Precautions</label>
+            <textarea class="mb-input mb-textarea" id="dPrecaution" rows="3" placeholder="Prevention steps…"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="mb-btn mb-btn-primary" onclick="submitDisease()"><i class="fas fa-save me-1"></i>Save Disease</button>
+            <button class="mb-btn mb-btn-ghost" onclick="clearDiseaseForm()"><i class="fas fa-undo me-1"></i>Clear Form</button>
+          </div>
+          <div id="diseaseMsg" style="margin-top:12px"></div>
+          <div class="mb-alert mb-alert-warning" style="margin-top:14px">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Remember to <strong>retrain the model</strong> (<code>python train.py</code>) after adding diseases for changes to take effect.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Hospitals ── -->
+    <div id="sec-hospitals" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-hospital me-2" style="color:var(--primary)"></i>Hospital Locations</h4>
+      <div class="search-bar">
+        <input type="text" class="mb-input" id="hospSearch" placeholder="🔍 Search hospitals…" oninput="filterHospitals()">
+        <button class="mb-btn mb-btn-primary" onclick="showSection('addHospital', document.querySelector('[onclick*=addHospital]'))">
+          <i class="fas fa-plus"></i> Add New
+        </button>
+      </div>
+      <div class="mb-card">
+        <div class="table-wrap">
+          <table class="data-table" id="hospitalsTable">
+            <thead><tr><th>#</th><th>Hospital Name</th><th>Coordinates</th><th>Address</th><th>Actions</th></tr></thead>
+            <tbody id="hospitalsTbody"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Add Hospital ── -->
+    <div id="sec-addHospital" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-map-marker-alt me-2" style="color:var(--primary)"></i>Add / Update Hospital</h4>
+      <div class="mb-card">
+        <div class="mb-card-body">
+          <div class="form-section-title"><i class="fas fa-hospital"></i> Hospital Details</div>
+          <div class="mb-form-group">
+            <label class="mb-label">Hospital Name (Tag)</label>
+            <input type="text" class="mb-input" id="hTag" placeholder="e.g. City General Hospital">
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="mb-form-group">
+              <label class="mb-label">Latitude</label>
+              <input type="number" class="mb-input" id="hLat" placeholder="e.g. 17.3850" step="0.0001">
+            </div>
+            <div class="mb-form-group">
+              <label class="mb-label">Longitude</label>
+              <input type="number" class="mb-input" id="hLng" placeholder="e.g. 78.4867" step="0.0001">
+            </div>
+          </div>
+          <div class="mb-form-group">
+            <label class="mb-label">Full Address</label>
+            <textarea class="mb-input mb-textarea" id="hAddr" rows="2" placeholder="Full street address…"></textarea>
+          </div>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <button class="mb-btn mb-btn-primary" onclick="submitHospital()"><i class="fas fa-save me-1"></i>Save Hospital</button>
+            <button class="mb-btn mb-btn-ghost" onclick="clearHospitalForm()"><i class="fas fa-undo me-1"></i>Clear</button>
+          </div>
+          <div id="hospMsg" style="margin-top:12px"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Users ── -->
+    <div id="sec-users" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-users me-2" style="color:var(--primary)"></i>Registered Users</h4>
+      <div class="mb-card">
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>#</th><th>Name</th><th>Username</th><th>Role</th><th>Actions</th></tr></thead>
+            <tbody id="usersTbody"><tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Settings ── -->
+    <div id="sec-settings" class="page-section">
+      <h4 style="font-family:'Poppins',sans-serif;font-weight:700;margin-bottom:20px"><i class="fas fa-cog me-2" style="color:var(--primary)"></i>Settings</h4>
+      <div class="mb-card mb-fade-in">
+        <div class="mb-card-body">
+          <div class="form-section-title"><i class="fas fa-robot"></i> Model Configuration</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="mb-form-group">
+              <label class="mb-label">Confidence Threshold (%)</label>
+              <input type="number" class="mb-input" value="60" min="30" max="95" id="setThreshold">
+            </div>
+            <div class="mb-form-group">
+              <label class="mb-label">Bot Name</label>
+              <input type="text" class="mb-input" value="Sam" id="setBotName">
+            </div>
+          </div>
+          <div class="mb-form-group">
+            <label class="mb-label">Disclaimer Text</label>
+            <textarea class="mb-input mb-textarea" rows="2" id="setDisclaimer">MediBot is for informational purposes only and does not replace professional medical advice.</textarea>
+          </div>
+          <button class="mb-btn mb-btn-primary" onclick="saveSettings()"><i class="fas fa-save me-1"></i>Save Settings</button>
+        </div>
+      </div>
+      <div class="mb-card mb-fade-in" style="margin-top:16px">
+        <div class="mb-card-body">
+          <div class="form-section-title"><i class="fas fa-lock"></i> Change Admin Password</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+            <div class="mb-form-group">
+              <label class="mb-label">New Password</label>
+              <input type="password" class="mb-input" id="newPw" placeholder="New password">
+            </div>
+            <div class="mb-form-group">
+              <label class="mb-label">Confirm Password</label>
+              <input type="password" class="mb-input" id="newPw2" placeholder="Confirm">
+            </div>
+          </div>
+          <button class="mb-btn mb-btn-ghost" onclick="changePw()"><i class="fas fa-key me-1"></i>Change Password</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer class="mb-footer">
+  <div style="max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+    <div style="font-size:0.85rem"><i class="fas fa-stethoscope me-2"></i>MediBot Admin Panel</div>
+    <div class="mb-footer-bottom" style="border:none;padding:0">© 2026 March. Built to promote better health awareness through AI.</div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='medibot.js') }}"></script>
+<script>
+  // ── Auth check — Flask /auth/me API use chestondi (localStorage kadu!) ──
+  async function checkAuth() {
+    try {
+      const res  = await fetch('/auth/me');
+      const data = await res.json();
+      if (!data.logged_in) {
+        window.location.href = '/login';
+      } else {
+        document.getElementById('adminName').textContent = data.username || 'Admin';
+        updateStats();
+      }
+    } catch (e) {
+      window.location.href = '/login';
+    }
+  }
+  checkAuth();
+
+  // ── Smooth redirect helper ──
+  function smoothRedirect(url) {
+    const overlay = document.getElementById('page-overlay');
+    overlay.classList.add('fade-out');
+    setTimeout(() => { window.location.href = url; }, 300);
+  }
+
+  // ── Logout ──
+  async function doLogout() {
+    await fetch('/auth/logout', { method: 'POST' });
+    smoothRedirect('/login');
+  }
+
+  // ── Navigation ──
+  function showSection(name, link) {
+    document.querySelectorAll('.page-section').forEach(s => s.classList.remove('active'));
+    document.getElementById('sec-' + name)?.classList.add('active');
+    document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+    if (link) link.classList.add('active');
+
+    if (name === 'diseases')  loadDiseaseTable();
+    if (name === 'hospitals') loadHospitalTable();
+    if (name === 'users')     loadUsersTable();
+    if (name === 'dashboard') updateStats();
+  }
+
+  function updateStats() {
+    fetch('/auth/users/count').then(r => r.json()).then(d => {
+      document.getElementById('statUsers').textContent = d.count ?? 0;
+    }).catch(() => {
+      document.getElementById('statUsers').textContent = '—';
+    });
+  }
+
+  // ── Disease table ──
+  const diseaseData = [
+    "Common Cold","Fever","Allergies","Asthma","Bronchial Asthma","Rheumatoid Arthritis","Arthritis",
+    "HIV/AIDS","Ovarian Cancer","Ovarian Cyst","Pneumothorax","Gout","Chronic Fatigue Syndrome",
+    "Hypertension","Type 2 Diabetes","Diabetes","Osteoarthritis","Migraine","GERD (Gastroesophageal Reflux Disease)",
+    "Urinary Tract Infection (UTI)","Depression","Anxiety","COPD","Allergy","Chronic Cholestasis",
+    "Drug Reaction","Peptic ulcer disease","AIDS","Gastroenteritis","Cervical Spondylosis",
+    "Paralysis (brain hemorrhage)","Jaundice","Malaria","Chicken pox","Dengue","Typhoid",
+    "Hepatitis A","Hepatitis B","Hepatitis C","Hepatitis D","Hepatitis E","Alcoholic hepatitis",
+    "Tuberculosis","Pneumonia","Dimorphic hemmorhoids(piles)","Hypothyroidism","Hyperthyroidism","Hypoglycemia",
+    "Acne","Psoriasis","Impetigo","Fungal Infection","Heart Attack","Varicose Veins","Vertigo","Dizziness",
+    "Anemia","Eczema","Lupus","Celiac Disease","Fibromyalgia","Atrial Fibrillation","Pancreatitis",
+    "Chronic Kidney Disease","IBS","Multiple Sclerosis","Kidney Stones","Appendicitis","Sinusitis",
+    "Gallstones","Meningitis","Stroke","Kidney Failure","Deep Vein Thrombosis","Pulmonary Embolism",
+    "Polycystic Ovary Syndrome","Endometriosis","Thyroid Cancer","Sciatica","Epilepsy",
+    "Parkinson's Disease","Alzheimer's Disease","Food Poisoning","Urticaria","Dengue Hemorrhagic Fever","Mumps"
+  ];
+  const patternCounts = [35,33,30,34,28,29,29,25,24,24,23,27,26,31,27,31,27,32,22,22,32,32,26,22,22,22,24,21,24,24,22,25,30,26,30,23,18,17,21,21,21,21,30,30,24,20,19,25,18,18,21,24,29,22,24,24,19,22,17,24,17,26,17,17,16,17,20,20,20,20,20,23,22,20,17,20,20,18,20,20,20,20,20,20,18,20];
+
+  function loadDiseaseTable() {
+    const tbody = document.getElementById('diseasesTbody');
+    const q = document.getElementById('diseaseSearch').value.toLowerCase();
+    tbody.innerHTML = diseaseData
+      .filter(d => d.toLowerCase().includes(q))
+      .map((d, i) => `<tr>
+        <td style="color:var(--text-muted)">${i+1}</td>
+        <td><span class="tag-badge">${d}</span></td>
+        <td><span class="mb-pill mb-pill-blue">${patternCounts[i] || '?'} patterns</span></td>
+        <td><span class="mb-pill mb-pill-green">✓ Yes</span></td>
+        <td style="display:flex;gap:5px;padding:10px 14px">
+          <button class="action-btn edit-btn" onclick="prefillDisease('${d.replace(/'/g,"\\'")}')"><i class="fas fa-edit"></i></button>
+          <button class="action-btn delete-btn" onclick="showToast('Delete requires server-side implementation.','warning')"><i class="fas fa-trash"></i></button>
+        </td>
+      </tr>`).join('') || '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">No results found</td></tr>';
+  }
+
+  function filterDiseases() { loadDiseaseTable(); }
+
+  function prefillDisease(name) {
+    document.getElementById('dTag').value = name;
+    showSection('addDisease', document.querySelector('[onclick*="addDisease"]'));
+    showToast('Prefilled with: ' + name, 'info');
+  }
+
+  function submitDisease() {
+    const tag  = document.getElementById('dTag').value.trim();
+    const pats = document.getElementById('dPatterns').value.trim();
+    if (!tag || !pats) { document.getElementById('diseaseMsg').innerHTML = '<div class="mb-alert mb-alert-danger"><i class="fas fa-times-circle"></i> Tag and patterns are required.</div>'; return; }
+    document.getElementById('diseaseMsg').innerHTML = `<div class="mb-alert mb-alert-success"><i class="fas fa-check-circle"></i> Disease "<strong>${tag}</strong>" saved to local record. Edit <strong>intents.json</strong> and run <code>python train.py</code> to apply.</div>`;
+    showToast('Disease saved (see instructions)', 'success');
+  }
+
+  function clearDiseaseForm() {
+    ['dTag','dPatterns','dResponse','dPrecaution'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('diseaseMsg').innerHTML = '';
+  }
+
+  // ── Hospitals table ──
+  function loadHospitalTable() {
+    document.getElementById('hospitalsTbody').innerHTML = `
+      <tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">
+        Hospital data stored in <strong>medical_centers.json</strong>. Use the "Add Hospital" form to add new entries.
+      </td></tr>`;
+  }
+  function filterHospitals() {}
+
+  function submitHospital() {
+    const tag  = document.getElementById('hTag').value.trim();
+    const lat  = document.getElementById('hLat').value;
+    const lng  = document.getElementById('hLng').value;
+    const addr = document.getElementById('hAddr').value.trim();
+    if (!tag || !lat || !lng || !addr) { document.getElementById('hospMsg').innerHTML = '<div class="mb-alert mb-alert-danger"><i class="fas fa-times-circle"></i> All fields required.</div>'; return; }
+    document.getElementById('hospMsg').innerHTML = `<div class="mb-alert mb-alert-success"><i class="fas fa-check-circle"></i> Add this to <strong>medical_centers.json</strong>:<br><code>{"tag":"${tag}","location":[${lat},${lng}],"Address":"${addr}"}</code></div>`;
+    showToast('Hospital info ready', 'success');
+  }
+  function clearHospitalForm() {
+    ['hTag','hLat','hLng','hAddr'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('hospMsg').innerHTML = '';
+  }
+
+  // ── Users table — Flask API nunchi load avutundi ──
+  function loadUsersTable() {
+    fetch('/auth/users').then(r => r.json()).then(users => {
+      const tbody = document.getElementById('usersTbody');
+      if (!users.length) {
+        tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">No registered users yet.</td></tr>';
+        return;
+      }
+      tbody.innerHTML = users.map((u, i) => `<tr>
+        <td>${i+1}</td>
+        <td>${u.name || '—'}</td>
+        <td><strong>${u.username}</strong></td>
+        <td><span class="mb-pill mb-pill-blue">${u.role}</span></td>
+        <td><button class="action-btn delete-btn" onclick="deleteUser('${u.username}')"><i class="fas fa-trash"></i></button></td>
+      </tr>`).join('');
+    }).catch(() => {
+      document.getElementById('usersTbody').innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text-muted)">Could not load users.</td></tr>';
+    });
+  }
+
+  function deleteUser(username) {
+    if (!confirm('Delete user: ' + username + '?')) return;
+    fetch('/auth/users/' + username, { method: 'DELETE' })
+      .then(r => r.json()).then(d => {
+        showToast(d.msg || 'User deleted.', 'success');
+        loadUsersTable();
+        updateStats();
+      });
+  }
+
+  function saveSettings() {
+    showToast('Settings saved!', 'success');
+  }
+
+  function changePw() {
+    const p1 = document.getElementById('newPw').value;
+    const p2 = document.getElementById('newPw2').value;
+    if (!p1) { showToast('Enter a new password.', 'warning'); return; }
+    if (p1 !== p2) { showToast('Passwords do not match.', 'error'); return; }
+    showToast('Password changed (demo only).', 'success');
+  }
+</script>
+</body>
+</html>
