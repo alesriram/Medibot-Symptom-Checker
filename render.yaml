@@ -7,7 +7,7 @@ services:
     buildCommand: |
       pip install --upgrade pip && pip install -r requirements.txt && python -c "import nltk; nltk.download('punkt_tab'); nltk.download('punkt'); nltk.download('wordnet')"
 
-    startCommand: gunicorn main:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    startCommand: "gunicorn main:app --workers 1 --threads 2"
 
     healthCheckPath: /health
 
