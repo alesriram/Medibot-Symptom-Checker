@@ -51,11 +51,7 @@ def create_app():
     app.secret_key = os.environ.get("MEDIBOT_SECRET_KEY", os.urandom(32))
 
     # ── CORS ─────────────────────────────────────────────
-    _raw_origins = os.environ.get(
-        "ALLOWED_ORIGINS", "http://localhost:5000,http://127.0.0.1:5000"
-    )
-    allowed_origins = [o.strip() for o in _raw_origins.split(",") if o.strip()]
-    CORS(app, origins=allowed_origins, supports_credentials=True)
+    CORS(app, supports_credentials=True)
 
     # ── Rate limiter ─────────────────────────────────────
     limiter = Limiter(
@@ -103,6 +99,7 @@ def create_app():
 
     # ── Startup tasks (SAFE) ─────────────────────────────
     with app.app_context():
+        _ensure_nltk()
         init_db()
 
     return app
