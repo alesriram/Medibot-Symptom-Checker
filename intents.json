@@ -227,8 +227,8 @@
       ],
       "responses": "Rest and drink plenty of fluids. Medication isn't needed. Call the doctor if the fever is accompanied by a severe headache, stiff neck, shortness of breath, or other unusual signs or symptoms. If you're uncomfortable, take paracetamol.",
       "Precaution": "To avoid fever:<br>1. Stay hydrated.<br>2. Rest and get plenty of sleep.<br>3. Use fever-reducing medications as directed.<br>4. Seek medical attention if fever persists or worsens.",
-      "description": "A temporary rise in body temperature above 38\u00b0C (100.4\u00b0F), often a sign of infection or inflammation. Usually a symptom of another condition.",
-      "precautions": "1. Stay hydrated with water and fluids. 2. Rest adequately. 3. Take paracetamol if needed. 4. Seek doctor if fever exceeds 39.5\u00b0C or persists beyond 3 days."
+      "description": "A temporary rise in body temperature above 38°C (100.4°F), often a sign of infection or inflammation. Usually a symptom of another condition.",
+      "precautions": "1. Stay hydrated with water and fluids. 2. Rest adequately. 3. Take paracetamol if needed. 4. Seek doctor if fever exceeds 39.5°C or persists beyond 3 days."
     },
     {
       "tag": "Allergies",
@@ -327,7 +327,13 @@
         "exercise induced asthma",
         "bronchospasm with wheezing",
         "I can't breathe properly after exertion",
-        "asthma flare up symptoms"
+        "asthma flare up symptoms",
+        "wheezing triggered by dust or allergens",
+        "asthma attack after exercise",
+        "breathing difficulty triggered by cold air",
+        "inhaler use for breathing difficulty",
+        "allergic asthma with seasonal triggers",
+        "wheezing that improves with bronchodilator"
       ],
       "responses": "You may have asthma. Asthma is a chronic respiratory condition that can cause breathing difficulties.<br>Recommended actions:<br>1. Use prescribed inhalers or medications as directed.<br>2. Avoid triggers that worsen symptoms (e.g., smoke, allergens).<br>3. Consult a healthcare professional for asthma management and education.",
       "Precaution": "To avoid asthma:<br>1. Identify and avoid asthma triggers.<br>2. Use prescribed inhalers and medications regularly.<br>3. Create an asthma action plan with your healthcare provider.<br>4. Maintain a clean and allergen-free home environment.",
@@ -364,7 +370,13 @@
         "peak flow meter reading low",
         "asthma exacerbation",
         "I have asthma and allergies",
-        "difficulty exhaling with wheeze"
+        "difficulty exhaling with wheeze",
+        "chronic bronchial asthma with mucus production",
+        "asthma with family history and mucoid sputum",
+        "bronchial inflammation causing persistent cough with phlegm",
+        "history of asthma with productive cough",
+        "breathlessness with thick green or yellow sputum",
+        "recurrent bronchial spasm with sputum production"
       ],
       "responses": "You have Bronchial Asthma. Bronchial asthma is a chronic respiratory condition with symptoms like fatigue, cough, high fever, breathlessness, a family history of asthma, and mucoid sputum production.<br>Managing bronchial asthma involves avoiding triggers, taking prescribed medications, and having an asthma action plan.",
       "Precaution": "To avoid bronchial asthma:<br>1. Follow your asthma action plan.<br>2. Avoid smoke and pollutants.<br>3. Use a humidifier to keep air moist.<br>4. Exercise regularly as recommended by your doctor.",
@@ -402,7 +414,13 @@
         "joint pain that is worse in morning",
         "CRP and ESR elevated with joint pain",
         "I have autoimmune joint disease",
-        "joint pain with systemic symptoms"
+        "joint pain with systemic symptoms",
+        "autoimmune joint disease with symmetric swelling",
+        "morning stiffness lasting more than one hour",
+        "symmetric joint swelling on both hands",
+        "rheumatoid factor positive with joint pain",
+        "joint damage with high CRP and ESR levels",
+        "small joints of hands and feet are swollen symmetrically"
       ],
       "responses": "You may have Rheumatoid Arthritis. It's an autoimmune disease that affects the joints.<br>Recommended actions:<br>1. Consult a rheumatologist for diagnosis and treatment.<br>2. Medications and physical therapy may help manage symptoms.<br>3. Maintain a healthy lifestyle with regular exercise.",
       "Precaution": "To avoid rheumatoid arthritis:<br>1. Maintain a healthy weight.<br>2. Exercise to strengthen joints and muscles.<br>3. Take prescribed medications as directed.<br>4. Consider physical therapy and joint protection techniques.",
@@ -440,7 +458,12 @@
         "chronic joint pain and fatigue",
         "painful knees and ankles",
         "I have joint disease",
-        "stiffness after sitting"
+        "stiffness after sitting",
+        "general joint pain affecting many parts of body",
+        "joint pain that comes and goes without specific cause",
+        "multiple joint pain with no autoimmune history",
+        "joint pain in elderly person without morning stiffness",
+        "pain in multiple joints with limited movement"
       ],
       "responses": "You have Arthritis. This is a condition that affects the joints.<br>Recommended actions:<br>1. Seek medical advice for proper diagnosis and treatment.<br>2. Follow prescribed medications and therapies.<br>3. Manage pain with recommended treatments.<br>4. Consider lifestyle changes to alleviate symptoms.",
       "Precaution": "To avoid arthritis:<br>1. Maintain a healthy weight.<br>2. Exercise regularly for joint health.<br>3. Use joint protection techniques.<br>4. Consider physical therapy and assistive devices if needed.",
@@ -540,7 +563,12 @@
         "ovarian torsion symptoms",
         "painful periods with pelvic mass",
         "PCOS symptoms",
-        "pain with bowel movements and periods"
+        "pain with bowel movements and periods",
+        "fluid filled cyst on ovary found on ultrasound",
+        "ovarian cyst causing bloating and pelvic pressure",
+        "pelvic pain from ovarian cyst",
+        "cyst on ovary causing irregular periods",
+        "sudden sharp pelvic pain from ruptured ovarian cyst"
       ],
       "responses": "You might have an Ovarian Cyst. It's a fluid-filled sac that can form on or within the ovaries.<br>Recommended actions:<br>1. Consult a healthcare professional for diagnosis and treatment options.<br>2. Treatment may involve observation, medication, or surgery depending on the size and symptoms of the cyst.",
       "Precaution": "To avoid ovarian cyst:<br>1. Maintain a healthy diet and weight.<br>2. Use birth control methods to prevent cyst formation.<br>3. Manage stress and hormonal imbalances.<br>4. Monitor and follow up on cysts with your doctor.",
@@ -786,7 +814,15 @@
         "bony spurs causing joint pain",
         "Heberden's nodes on fingers",
         "I have degenerative joint disease",
-        "knee replacement needed symptoms"
+        "knee replacement needed symptoms",
+        "knee pain getting worse with age and activity",
+        "worn out cartilage causing bone on bone pain",
+        "joint pain that worsens with climbing stairs",
+        "old age joint degeneration causing pain",
+        "joint pain in weight bearing joints like knees and hips",
+        "pain increases with physical activity in knees",
+        "grinding sensation in knee joint when moving",
+        "elderly patient with progressive knee pain"
       ],
       "responses": "You may have Osteoarthritis. It's a degenerative joint disease that can cause pain and stiffness in the joints.<br>Recommended actions:<br>1. Consult a healthcare professional for diagnosis and treatment options.<br>2. Physical therapy, pain management, and lifestyle changes can help manage symptoms.",
       "Precaution": "To avoid osteoarthritis:<br>1. Maintain a healthy weight.<br>2. Exercise to strengthen joints and muscles.<br>3. Use joint protection techniques.<br>4. Consider physical therapy if needed.",
@@ -1010,7 +1046,7 @@
       ],
       "responses": "You may have Chronic Obstructive Pulmonary Disease (COPD). It's a progressive lung disease that can cause breathing difficulties.<br>Recommended actions:<br>1. Consult a healthcare professional for diagnosis and management.<br>2. Medications, pulmonary rehabilitation, and lifestyle changes can help manage COPD symptoms.",
       "Precaution": "To avoid COPD (Chronic Obstructive Pulmonary Disease):<br>1. Quit smoking or avoid exposure to smoke.<br>2. Use prescribed inhalers and medications.<br>3. Avoid lung irritants and pollutants.<br>4. Engage in pulmonary rehabilitation if recommended.",
-      "description": "Chronic Obstructive Pulmonary Disease \u2014 a lung disease causing obstructed airflow, including chronic bronchitis and emphysema.",
+      "description": "Chronic Obstructive Pulmonary Disease — a lung disease causing obstructed airflow, including chronic bronchitis and emphysema.",
       "precautions": "1. Stop smoking immediately. 2. Use prescribed inhalers. 3. Avoid air pollution and dust. 4. Get annual flu and pneumonia vaccinations."
     },
     {
@@ -1068,7 +1104,13 @@
         "I think I'm having a drug reaction",
         "itching and redness after medicine",
         "anaphylaxis from drug",
-        "severe reaction to prescription drugs"
+        "severe reaction to prescription drugs",
+        "skin rash after starting new medication",
+        "allergic reaction to antibiotic causing hives",
+        "drug induced rash after taking penicillin",
+        "medication side effect causing itching and rash",
+        "Stevens Johnson syndrome from drug allergy",
+        "rash appeared after taking new prescription"
       ],
       "responses": "You have Drug Reaction Drug reactions can manifest with symptoms like itching, skin rash, stomach pain, burning micturition, and spotting urination.<br>If you suspect a drug reaction, consult your healthcare provider immediately for evaluation and appropriate steps.",
       "Precaution": "To avoid drug reaction:<br>1. Take medications as prescribed by a healthcare provider.<br>2. Report any adverse reactions to your doctor.<br>3. Inform healthcare providers of any allergies.<br>4. Avoid sharing medications with others.",
@@ -1164,7 +1206,12 @@
         "gut infection with fever and diarrhea",
         "I feel sick with stomach cramps",
         "throwing up and loose stools",
-        "dehydration from vomiting and diarrhea"
+        "dehydration from vomiting and diarrhea",
+        "stomach flu with vomiting and diarrhea lasting days",
+        "viral gastroenteritis with watery diarrhea",
+        "stomach infection with cramps and loose motions",
+        "norovirus gastroenteritis with sudden vomiting",
+        "stomach bug going around the family"
       ],
       "responses": "You have Gastroenteritis. Gastroenteritis is an inflammation of the stomach and intestines, often causing symptoms such as vomiting, sunken eyes, dehydration, and diarrhea.<br>Treatment for gastroenteritis includes staying hydrated and, in severe cases, seeking medical attention for rehydration therapy.",
       "Precaution": "To avoid gastroenteritis:<br>1. Practice good hygiene and handwashing.<br>2. Avoid contaminated food and water.<br>3. Stay hydrated when ill.<br>4. Follow public health guidelines for outbreaks.",
@@ -1375,7 +1422,11 @@
         "skin rash after dengue fever",
         "dengue warning signs",
         "severe abdominal pain with fever",
-        "I tested positive for dengue"
+        "I tested positive for dengue",
+        "dengue fever with severe body pain and rash",
+        "classic dengue with high fever and bone pain",
+        "dengue NS1 positive with fever and joint pain",
+        "breakbone fever with headache behind eyes"
       ],
       "responses": "You have Dengue. Dengue is a mosquito-borne viral infection that can cause severe flu-like symptoms. Here are four points to cure Dengue:<br>1. Stay hydrated by drinking plenty of fluids.<br>2. Get plenty of rest.<br>3. Monitor your platelet count and seek medical attention if it drops significantly.<br>4. Use mosquito nets and repellents to prevent further mosquito bites.",
       "Precaution": "To avoid dengue:<br>1. Prevent mosquito bites with repellent and protective clothing.<br>2. Eliminate mosquito breeding sites.<br>3. Get prompt medical attention for severe symptoms.<br>4. Follow public health guidelines during outbreaks.",
@@ -1434,7 +1485,11 @@
         "yellow eyes and fatigue",
         "liver function tests are elevated",
         "acute viral hepatitis symptoms",
-        "loss of appetite with jaundice"
+        "loss of appetite with jaundice",
+        "acute hepatitis after contaminated food or water",
+        "hepatitis A from eating street food",
+        "short term liver infection from contaminated water",
+        "jaundice after travelling with muscle pain"
       ],
       "responses": "You have Hepatitis A. Hepatitis A is a viral infection that affects the liver and can cause jaundice. Here are four points to cure Hepatitis A:<br>1. Get plenty of rest.<br>2. Stay hydrated and eat a balanced diet.<br>3. Avoid alcohol and liver-damaging substances.<br>4. Consult a healthcare professional for further evaluation and treatment.",
       "Precaution": "To avoid hepatitis A:<br>1. Get vaccinated.<br>2. Practice good hygiene and food safety.<br>3. Avoid contaminated water and food.<br>4. Consider immune globulin for immediate protection in high-risk situations.",
@@ -1460,7 +1515,11 @@
         "hepatitis B with elevated liver enzymes",
         "surface antigen positive",
         "viral hepatitis B symptoms",
-        "fatigue jaundice from hepatitis B"
+        "fatigue jaundice from hepatitis B",
+        "hepatitis B surface antigen positive",
+        "chronic liver disease from HBV infection",
+        "hepatitis from blood transfusion or needle sharing",
+        "HBsAg positive with liver inflammation"
       ],
       "responses": "You have Hepatitis B. Hepatitis B is a viral infection that affects the liver and can lead to chronic liver disease. Here are four points to cure Hepatitis B:<br>1. Consult a healthcare professional for antiviral treatment.<br>2. Get vaccinated to prevent future infections.<br>3. Practice safe sex and avoid sharing needles or personal items that may spread the virus.<br>4. Limit alcohol consumption and maintain a healthy lifestyle.",
       "Precaution": "To avoid hepatitis B:<br>1. Get vaccinated.<br>2. Practice safe sex and avoid sharing needles.<br>3. Seek medical treatment for infected individuals.<br>4. Ensure healthcare workers follow standard precautions.",
@@ -1490,7 +1549,11 @@
         "fatigue and liver problems from hep C",
         "hep C antibody test positive",
         "I have hepatitis C with muscle aches",
-        "right side abdominal pain with hepatitis C"
+        "right side abdominal pain with hepatitis C",
+        "hepatitis C RNA positive with fatigue",
+        "chronic HCV infection with liver scarring",
+        "liver disease from hepatitis C virus",
+        "HCV antibody positive with jaundice"
       ],
       "responses": "You may have Hepatitis C. It's a viral infection that affects the liver.<br>Recommended actions:<br>1. Consult a healthcare professional for diagnosis and treatment.<br>2. Antiviral medications can be prescribed to manage Hepatitis C.<br>3. Avoid alcohol and follow a liver-healthy diet.",
       "Precaution": "To avoid hepatitis C:<br>1. Avoid sharing needles and practice safe sex.<br>2. Seek medical treatment for infected individuals.<br>3. Ensure healthcare workers follow standard precautions.<br>4. Consider antiviral medications for high-risk individuals.",
@@ -1520,7 +1583,10 @@
         "hep D with fatigue and nausea",
         "I have co-infection of hep B and D",
         "hepatitis D rapid liver deterioration",
-        "joint pain and jaundice from hepatitis D"
+        "joint pain and jaundice from hepatitis D",
+        "hepatitis D coinfection with hepatitis B",
+        "delta hepatitis with severe liver damage",
+        "HDV infection requiring HBV as helper virus"
       ],
       "responses": "You have Hepatitis D. Hepatitis D is a viral infection that affects the liver and can worsen the symptoms of Hepatitis B. Here are four points to cure Hepatitis D:<br>1. Consult a healthcare professional for antiviral treatment.<br>2. Get vaccinated for Hepatitis B to prevent further infection.<br>3. Avoid alcohol and liver-damaging substances.<br>4. Follow medical advice and regular check-ups.",
       "Precaution": "To avoid hepatitis D:<br>1. Get vaccinated against hepatitis B.<br>2. Practice safe sex and avoid sharing needles.<br>3. Seek medical treatment for infected individuals.<br>4. Ensure healthcare workers follow standard precautions.",
@@ -1550,7 +1616,10 @@
         "hepatitis E liver infection symptoms",
         "traveling abroad got hepatitis E",
         "hep E with loss of appetite",
-        "jaundice and pale stool from hepatitis E"
+        "jaundice and pale stool from hepatitis E",
+        "acute hepatitis E from contaminated water",
+        "epidemic hepatitis from flooding or poor sanitation",
+        "waterborne jaundice with high fever"
       ],
       "responses": "You have Hepatitis E. Hepatitis E is a viral infection that affects the liver and can cause severe symptoms. Here are four points to cure Hepatitis E:<br>1. Seek immediate medical attention if symptoms are severe.<br>2. Get plenty of rest and stay hydrated.<br>3. Follow medical advice and treatment recommendations.<br>4. Practice good hygiene to prevent further spread of the virus.",
       "Precaution": "To avoid hepatitis E:<br>1. Practice good hygiene and safe food handling.<br>2. Avoid drinking untreated water in endemic areas.<br>3. Get prompt medical attention if you suspect infection.<br>4. Consider the hepatitis E vaccine if traveling to high-risk regions.",
@@ -1720,7 +1789,12 @@
         "constipation and weight gain",
         "depression from low thyroid",
         "bradycardia with hypothyroid",
-        "I take levothyroxine"
+        "I take levothyroxine",
+        "underactive thyroid causing weight gain and cold intolerance",
+        "hypothyroid with fatigue hair loss and constipation",
+        "TSH high T4 low indicating hypothyroidism",
+        "thyroid not producing enough hormones causing depression",
+        "hashimotos thyroiditis with dry skin and fatigue"
       ],
       "responses": "You have Hypothyroidism. This is a condition where the thyroid gland does not produce enough thyroid hormones.<br>Recommended actions:<br>1. Take thyroid medication as prescribed by your doctor.<br>2. Maintain a balanced diet.<br>3. Exercise regularly to boost metabolism.<br>4. Manage stress and get regular check-ups.",
       "Precaution": "To avoid hypothyroidism:<br>1. Take prescribed thyroid medications as directed.<br>2. Follow up with regular thyroid function tests.<br>3. Maintain a healthy diet and exercise routine.<br>4. Be aware of potential thyroid disruptors.",
@@ -1748,7 +1822,13 @@
         "exophthalmos and palpitations",
         "nervousness with weight loss",
         "hyperthyroid with goiter",
-        "I am hyperactive from thyroid issues"
+        "I am hyperactive from thyroid issues",
+        "overactive thyroid with weight loss despite eating",
+        "hyperthyroid with rapid heartbeat and anxiety",
+        "thyroid overproducing hormones causing sweating",
+        "Graves disease with bulging eyes and tremor",
+        "TSH low T4 high indicating hyperthyroidism",
+        "heat intolerance with palpitations and weight loss"
       ],
       "responses": "You have Hyperthyroidism. This is a condition where the thyroid gland produces too much thyroid hormone.<br>Recommended actions:<br>1. Consult an endocrinologist for treatment options.<br>2. Medication, radioactive iodine, or surgery may be recommended.<br>3. Monitor your thyroid levels regularly.<br>4. Maintain a healthy lifestyle.",
       "Precaution": "To avoid hyperthyroidism:<br>1. Take prescribed medications as directed.<br>2. Follow up with regular thyroid function tests.<br>3. Manage stress and avoid excessive iodine intake.<br>4. Consider radioactive iodine therapy if recommended by your doctor.",
@@ -2001,7 +2081,14 @@
         "head movement causes dizziness",
         "Meniere's disease symptoms",
         "spinning and vomiting",
-        "balance problem with spinning feeling"
+        "balance problem with spinning feeling",
+        "room is spinning when I move my head",
+        "BPPV benign positional vertigo",
+        "sensation that everything around me is spinning",
+        "spinning feeling that starts when lying down",
+        "inner ear problem causing spinning sensation",
+        "vertigo triggered by head position change",
+        "spinning dizziness when turning head in bed"
       ],
       "responses": "You may have (Vertigo) Paroxysmal Positional Vertigo. It is a type of vertigo characterized by sudden spinning sensations.<br>Recommended actions:<br>1. Consult an ENT specialist or neurologist for evaluation and diagnosis.<br>2. Undergo specific positional maneuvers as advised by the healthcare provider.<br>3. Avoid sudden head movements that trigger symptoms.<br>4. Follow prescribed treatment and exercises.",
       "Precaution": "To avoid vertigo:<br>1. Avoid sudden head movements.<br>2. Stay hydrated and maintain a balanced diet.<br>3. Manage stress.<br>4. Consider vestibular rehabilitation therapy if recommended by a healthcare provider.",
@@ -2034,7 +2121,12 @@
         "dizzy after standing",
         "orthostatic hypotension symptoms",
         "light headedness and weakness",
-        "dizzy after medication"
+        "dizzy after medication",
+        "feeling lightheaded and unsteady without spinning",
+        "lightheadedness with ear pain",
+        "non-spinning dizziness with ear discomfort",
+        "feeling faint with visual disturbances",
+        "dizziness without room spinning sensation"
       ],
       "responses": "You have Dizziness. This is a symptom that can have various underlying causes.<br>Recommended actions:<br>1. Rest in a safe place to prevent falls.<br>2. Stay hydrated.<br>3. Avoid sudden changes in position.<br>4. Consult a doctor to determine the cause of dizziness.",
       "Precaution": "To avoid dizziness:<br>1. Stay hydrated and eat regular meals.<br>2. Avoid excessive alcohol and caffeine.<br>3. Use assistive devices if needed.<br>4. Manage underlying medical conditions with the help of a healthcare provider.",
@@ -2265,7 +2357,12 @@
         "I am on dialysis",
         "elevated urea and creatinine",
         "reduced GFR with swelling",
-        "end stage renal disease symptoms"
+        "end stage renal disease symptoms",
+        "slowly worsening kidney function over years",
+        "stage 3 chronic kidney disease with protein in urine",
+        "long standing kidney damage from diabetes or hypertension",
+        "GFR decreasing over time with kidney disease",
+        "chronic renal failure with anaemia and fatigue"
       ],
       "responses": "You might have Chronic Kidney Disease (CKD). It's a progressive condition that affects kidney function.<br>Recommended actions:<br>1. Consult a healthcare professional for diagnosis and management.<br>2. Medications and lifestyle changes can help slow the progression of CKD.",
       "Precaution": "To avoid chronic kidney disease:<br>1. Manage underlying health conditions.<br>2. Maintain a balanced diet and healthy weight.<br>3. Stay hydrated.<br>4. Get regular check-ups with a nephrologist.",
@@ -2294,7 +2391,7 @@
       ],
       "responses": "You might have Irritable Bowel Syndrome (IBS). It's a common gastrointestinal disorder characterized by digestive discomfort.<br>Recommended actions:<br>1. Consult a gastroenterologist for diagnosis and management.<br>2. Dietary changes and medications can help manage IBS symptoms.",
       "Precaution": "To avoid IBS (Irritable Bowel Syndrome):<br>1. Identify and avoid trigger foods.<br>2. Maintain a high-fiber diet.<br>3. Manage stress and consider relaxation techniques.<br>4. Follow a regular eating schedule.",
-      "description": "Irritable Bowel Syndrome \u2014 a chronic gastrointestinal disorder causing abdominal pain, bloating, and changes in bowel habits (diarrhea or constipation).",
+      "description": "Irritable Bowel Syndrome — a chronic gastrointestinal disorder causing abdominal pain, bloating, and changes in bowel habits (diarrhea or constipation).",
       "precautions": "1. Identify and avoid food triggers. 2. Eat smaller, more frequent meals. 3. Reduce stress. 4. Follow prescribed diet (low-FODMAP if recommended)."
     },
     {
@@ -2376,7 +2473,7 @@
         "I have appendix pain with fever and vomiting",
         "right lower quadrant pain severe"
       ],
-      "responses": "You may have Appendicitis. This is inflammation of the appendix that requires urgent medical attention.<br>Recommended actions:<br>1. Go to the emergency room immediately \u2014 this can be life-threatening.<br>2. Do NOT eat, drink, or take laxatives.<br>3. Surgery (appendectomy) is usually required.<br>4. Call 112 if pain becomes unbearable.",
+      "responses": "You may have Appendicitis. This is inflammation of the appendix that requires urgent medical attention.<br>Recommended actions:<br>1. Go to the emergency room immediately — this can be life-threatening.<br>2. Do NOT eat, drink, or take laxatives.<br>3. Surgery (appendectomy) is usually required.<br>4. Call 112 if pain becomes unbearable.",
       "Precaution": "Appendicitis cannot fully be prevented, but:<br>1. Seek medical care immediately at first signs.<br>2. Do not delay treatment as it can rupture.<br>3. Maintain a high-fiber diet for gut health.<br>4. Get imaging done if abdominal pain persists.",
       "description": "Inflammation of the appendix causing severe lower right abdominal pain, fever, nausea, and vomiting. It is a medical emergency requiring surgical removal.",
       "precautions": "1. Seek emergency care immediately. 2. Do not eat or drink. 3. Avoid pain medicines that may mask symptoms. 4. Surgical appendectomy is the standard treatment."
@@ -2435,7 +2532,7 @@
         "upper abdominal pain with chills and fever"
       ],
       "responses": "You may have Gallstones. These are hardened deposits in the gallbladder that can cause severe abdominal pain, especially after fatty meals.<br>Recommended actions:<br>1. Avoid fatty, fried, and greasy foods.<br>2. See a gastroenterologist for evaluation.<br>3. Ultrasound imaging is used for diagnosis.<br>4. Surgery (cholecystectomy) may be needed for symptomatic gallstones.",
-      "Precaution": "To reduce risk of gallstones:<br>1. Maintain a healthy weight \u2014 avoid rapid weight loss.<br>2. Eat a balanced low-fat high-fiber diet.<br>3. Exercise regularly.<br>4. Avoid skipping meals.",
+      "Precaution": "To reduce risk of gallstones:<br>1. Maintain a healthy weight — avoid rapid weight loss.<br>2. Eat a balanced low-fat high-fiber diet.<br>3. Exercise regularly.<br>4. Avoid skipping meals.",
       "description": "Hard deposits in the gallbladder that can block bile flow, causing episodes of severe upper right abdominal pain, nausea, and jaundice.",
       "precautions": "1. Low fat balanced diet. 2. Regular physical activity. 3. Avoid crash dieting. 4. Surgical removal for symptomatic gallstones."
     },
@@ -2463,8 +2560,8 @@
         "I can't touch my chin to chest with headache",
         "I have high fever confusion and stiff neck"
       ],
-      "responses": "You may have Meningitis. This is a serious inflammation of the membranes surrounding the brain and spinal cord.<br>IMPORTANT: This is a medical emergency!<br>1. Call 112 or go to the ER immediately.<br>2. Do not wait \u2014 bacterial meningitis can be fatal within hours.<br>3. Antibiotics are given intravenously for bacterial meningitis.<br>4. Lumbar puncture may be performed for diagnosis.",
-      "Precaution": "To prevent meningitis:<br>1. Get vaccinated \u2014 meningococcal and pneumococcal vaccines are available.<br>2. Practice good hygiene \u2014 wash hands frequently.<br>3. Avoid sharing utensils with infected persons.<br>4. Seek immediate care if symptoms appear.",
+      "responses": "You may have Meningitis. This is a serious inflammation of the membranes surrounding the brain and spinal cord.<br>IMPORTANT: This is a medical emergency!<br>1. Call 112 or go to the ER immediately.<br>2. Do not wait — bacterial meningitis can be fatal within hours.<br>3. Antibiotics are given intravenously for bacterial meningitis.<br>4. Lumbar puncture may be performed for diagnosis.",
+      "Precaution": "To prevent meningitis:<br>1. Get vaccinated — meningococcal and pneumococcal vaccines are available.<br>2. Practice good hygiene — wash hands frequently.<br>3. Avoid sharing utensils with infected persons.<br>4. Seek immediate care if symptoms appear.",
       "description": "Inflammation of the meninges (membranes surrounding the brain/spinal cord) causing severe headache, stiff neck, fever, and photophobia. It is a medical emergency.",
       "precautions": "1. Vaccination is the best prevention. 2. Seek emergency care immediately. 3. Avoid close contact with infected people. 4. IV antibiotics are life saving."
     },
@@ -2495,7 +2592,7 @@
         "mini stroke symptoms",
         "sudden loss of coordination"
       ],
-      "responses": "You may be experiencing a Stroke. A stroke occurs when blood supply to part of the brain is cut off. Symptoms include sudden facial drooping, arm weakness, speech difficulty, confusion, and severe headache. This is a medical EMERGENCY \u2014 call 112 immediately.<br>Time is critical. Every minute counts in stroke treatment.",
+      "responses": "You may be experiencing a Stroke. A stroke occurs when blood supply to part of the brain is cut off. Symptoms include sudden facial drooping, arm weakness, speech difficulty, confusion, and severe headache. This is a medical EMERGENCY — call 112 immediately.<br>Time is critical. Every minute counts in stroke treatment.",
       "Precaution": "EMERGENCY: Call 112 immediately.<br>1. Note the time symptoms started.<br>2. Do not give food or water.<br>3. Keep the person calm and lying down.<br>4. Go to the nearest stroke center."
     },
     {
@@ -2522,7 +2619,12 @@
         "kidney shutdown symptoms",
         "CKD stage 5 symptoms",
         "itching and fatigue from kidney disease",
-        "metallic taste in mouth kidney failure"
+        "metallic taste in mouth kidney failure",
+        "acute kidney failure with no urine production",
+        "kidneys stopped working requiring dialysis",
+        "sudden kidney shutdown with fluid overload",
+        "acute renal failure with creatinine very high",
+        "anuria with swelling all over body"
       ],
       "responses": "You may have Kidney Failure (Renal Failure). The kidneys are unable to filter waste from the blood. Symptoms include reduced urine output, leg swelling, fatigue, nausea, and confusion. Requires urgent medical care and possibly dialysis.",
       "Precaution": "1. Restrict fluid and potassium intake as directed.<br>2. Follow a kidney-friendly diet.<br>3. Take prescribed medications regularly.<br>4. Attend dialysis sessions if recommended.<br>5. Monitor blood pressure and creatinine."
@@ -2552,7 +2654,7 @@
         "Homan's sign positive symptoms"
       ],
       "responses": "You may have Deep Vein Thrombosis (DVT). A blood clot has formed in a deep vein, usually in the leg. Symptoms include swelling, redness, warmth, and pain in the calf or thigh. DVT is serious because the clot can travel to the lungs (pulmonary embolism).",
-      "Precaution": "1. Seek immediate medical evaluation.<br>2. Avoid massaging the area \u2014 it can dislodge the clot.<br>3. Blood thinners are usually prescribed.<br>4. Move legs regularly during long travel.<br>5. Wear compression stockings as advised."
+      "Precaution": "1. Seek immediate medical evaluation.<br>2. Avoid massaging the area — it can dislodge the clot.<br>3. Blood thinners are usually prescribed.<br>4. Move legs regularly during long travel.<br>5. Wear compression stockings as advised."
     },
     {
       "tag": "Pulmonary Embolism",
@@ -2575,8 +2677,8 @@
         "I can't breathe and my heart is racing",
         "clot traveled to my lung symptoms"
       ],
-      "responses": "You may be experiencing a Pulmonary Embolism \u2014 a blood clot in the lungs. This is a MEDICAL EMERGENCY. Symptoms include sudden shortness of breath, chest pain, rapid heartbeat, and coughing blood. Call 112 immediately.",
-      "Precaution": "EMERGENCY: Call 112 immediately.<br>1. Do not delay \u2014 this is life-threatening.<br>2. Blood thinners (anticoagulants) are the primary treatment.<br>3. Hospitalization required.<br>4. Prevent future clots by treating DVT early."
+      "responses": "You may be experiencing a Pulmonary Embolism — a blood clot in the lungs. This is a MEDICAL EMERGENCY. Symptoms include sudden shortness of breath, chest pain, rapid heartbeat, and coughing blood. Call 112 immediately.",
+      "Precaution": "EMERGENCY: Call 112 immediately.<br>1. Do not delay — this is life-threatening.<br>2. Blood thinners (anticoagulants) are the primary treatment.<br>3. Hospitalization required.<br>4. Prevent future clots by treating DVT early."
     },
     {
       "tag": "Polycystic Ovary Syndrome",
@@ -2627,7 +2729,13 @@
         "laparoscopy for endometriosis",
         "period pain that stops daily life",
         "adenomyosis symptoms",
-        "endo belly bloating and pain"
+        "endo belly bloating and pain",
+        "painful periods with tissue outside uterus",
+        "endometrial tissue growing outside uterus causing pain",
+        "severe dysmenorrhea with infertility",
+        "period pain so bad I cannot go to work",
+        "deep pelvic pain during intercourse and menstruation",
+        "chronic pelvic pain worse during menstrual cycle"
       ],
       "responses": "You may have Endometriosis. It is a condition where tissue similar to the uterine lining grows outside the uterus, causing severe pelvic pain, painful periods, and possible infertility. Early diagnosis and management are key.",
       "Precaution": "1. Consult a gynecologist for diagnosis (laparoscopy).<br>2. Hormonal therapy can manage symptoms.<br>3. Pain management with NSAIDs.<br>4. Surgical options are available for severe cases.<br>5. Fertility preservation may be discussed."
@@ -2839,10 +2947,15 @@
         "rapid breathing with dengue",
         "dengue with liver involvement",
         "dengue warning signs appearing",
-        "dengue critical phase symptoms"
+        "dengue critical phase symptoms",
+        "dengue with bleeding from nose and gums",
+        "dengue with blood in vomit",
+        "severe dengue with low platelet count and bleeding",
+        "dengue shock syndrome with internal bleeding",
+        "dengue hemorrhagic with purpura and bruising"
       ],
-      "responses": "You may have Dengue Hemorrhagic Fever \u2014 a severe form of dengue infection. It can cause dangerous drops in platelet count, bleeding, and plasma leakage. This requires immediate hospitalization and monitoring.",
-      "Precaution": "1. Hospitalize immediately \u2014 this is a medical emergency.<br>2. Monitor platelet count regularly.<br>3. IV fluids to prevent dehydration and shock.<br>4. Avoid NSAIDs (aspirin, ibuprofen) \u2014 use only paracetamol.<br>5. Rest and close medical supervision required."
+      "responses": "You may have Dengue Hemorrhagic Fever — a severe form of dengue infection. It can cause dangerous drops in platelet count, bleeding, and plasma leakage. This requires immediate hospitalization and monitoring.",
+      "Precaution": "1. Hospitalize immediately — this is a medical emergency.<br>2. Monitor platelet count regularly.<br>3. IV fluids to prevent dehydration and shock.<br>4. Avoid NSAIDs (aspirin, ibuprofen) — use only paracetamol.<br>5. Rest and close medical supervision required."
     },
     {
       "tag": "Mumps",
@@ -2919,7 +3032,7 @@
         "loss of peripheral vision with eye pain",
         "halos around lights and eye pain"
       ],
-      "responses": "You may have Glaucoma. It is a group of eye conditions that damage the optic nerve, often caused by abnormally high pressure in the eye.<br>Recommended actions:<br>1. See an ophthalmologist immediately \u2014 this can be a medical emergency.<br>2. Do not delay treatment as it can lead to permanent vision loss.<br>3. Eye drops, laser treatment, or surgery may be needed.",
+      "responses": "You may have Glaucoma. It is a group of eye conditions that damage the optic nerve, often caused by abnormally high pressure in the eye.<br>Recommended actions:<br>1. See an ophthalmologist immediately — this can be a medical emergency.<br>2. Do not delay treatment as it can lead to permanent vision loss.<br>3. Eye drops, laser treatment, or surgery may be needed.",
       "Precaution": "To manage glaucoma:<br>1. Regular eye pressure checks (tonometry).<br>2. Take prescribed eye drops consistently.<br>3. Protect eyes from injury.<br>4. Avoid activities that increase eye pressure (like heavy lifting).",
       "description": "A condition that damages the optic nerve, often due to high intraocular pressure. Can cause vision loss if untreated.",
       "precautions": "1. Regular eye exams. 2. Take prescribed medications. 3. Monitor eye pressure. 4. Seek immediate care for sudden vision loss."
@@ -2936,10 +3049,18 @@
         "blurred vision with eye pain and redness",
         "I have inflamed eye with photophobia",
         "eye ache with vision changes and redness",
-        "I have severe eye pain with light hurting my eyes"
+        "I have severe eye pain with light hurting my eyes",
+        "inflammation inside the eye with pain and redness",
+        "uveitis with blurred vision and eye pain",
+        "eye inflammation causing floaters and light sensitivity",
+        "anterior uveitis with red painful eye",
+        "uveal tract inflammation causing vision problems",
+        "eye pain with photophobia and decreased vision",
+        "autoimmune eye inflammation with flare and cells",
+        "iritis or uveitis causing eye redness and pain"
       ],
       "responses": "You may have Uveitis. It is an inflammation of the uvea, the middle layer of the eye, which can cause pain, redness, and vision problems.<br>Recommended actions:<br>1. Consult an ophthalmologist urgently.<br>2. Steroid eye drops or other anti-inflammatory medications may be prescribed.<br>3. Prompt treatment is essential to prevent vision loss.",
-      "Precaution": "To manage uveitis:<br>1. Seek immediate eye care \u2014 do not ignore eye pain.<br>2. Complete the full course of prescribed medication.<br>3. Wear sunglasses to reduce light sensitivity.<br>4. Regular follow-ups with an eye specialist.",
+      "Precaution": "To manage uveitis:<br>1. Seek immediate eye care — do not ignore eye pain.<br>2. Complete the full course of prescribed medication.<br>3. Wear sunglasses to reduce light sensitivity.<br>4. Regular follow-ups with an eye specialist.",
       "description": "Inflammation of the uvea (middle layer of the eye) causing eye pain, redness, blurred vision, and light sensitivity.",
       "precautions": "1. See an ophthalmologist immediately. 2. Use prescribed anti-inflammatory drops. 3. Wear sunglasses outdoors. 4. Monitor for changes in vision."
     }
