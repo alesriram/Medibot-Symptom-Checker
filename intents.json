@@ -2870,6 +2870,78 @@
       ],
       "responses": "You may have Mumps. It is a contagious viral infection that primarily affects the parotid (salivary) glands, causing swollen cheeks and jaw pain. It can also cause fever, headache, and in some cases complications like orchitis or meningitis.",
       "Precaution": "1. Isolate to prevent spreading to others.<br>2. Rest and drink plenty of fluids.<br>3. Pain relievers (paracetamol/ibuprofen) for fever and pain.<br>4. Apply warm or cold compresses to swollen glands.<br>5. Consult a doctor if severe headache, stiff neck, or testicle pain occurs."
+    },
+    {
+      "tag": "Conjunctivitis",
+      "patterns": [
+        "eye redness and discharge",
+        "my eyes are red and itchy",
+        "pink eye with discharge",
+        "eye pain redness and blurred vision",
+        "I have red irritated eyes with discharge",
+        "my eyes are red watery and painful",
+        "eye inflammation with redness and tearing",
+        "conjunctivitis symptoms",
+        "red eye with sticky discharge",
+        "I have pink eye",
+        "my eye is red and producing discharge",
+        "eye redness itching and watering",
+        "I have sore red eyes",
+        "eyes are burning and red",
+        "eye pain with redness and sensitivity to light",
+        "both eyes are red and itchy",
+        "itchy watery red eyes",
+        "eye discomfort with redness",
+        "I have eye infection with redness",
+        "eye redness with pain and blurry sight"
+      ],
+      "responses": "You may have Conjunctivitis (Pink Eye). It is an inflammation of the membrane covering the white part of the eye and inner eyelid.<br>Recommended actions:<br>1. Consult an eye doctor (ophthalmologist) for proper diagnosis.<br>2. Avoid touching or rubbing your eyes.<br>3. Wash hands frequently to prevent spreading.<br>4. Antibiotic or antiviral eye drops may be prescribed.",
+      "Precaution": "To avoid conjunctivitis:<br>1. Wash hands frequently and avoid touching eyes.<br>2. Do not share towels, pillowcases, or eye makeup.<br>3. Wear protective eyewear in dusty environments.<br>4. Consult doctor immediately if symptoms worsen.",
+      "description": "Inflammation of the conjunctiva causing redness, itching, and discharge from the eye. Can be bacterial, viral, or allergic.",
+      "precautions": "1. Wash hands frequently. 2. Avoid touching eyes. 3. Do not share personal items. 4. See a doctor if vision worsens."
+    },
+    {
+      "tag": "Glaucoma",
+      "patterns": [
+        "eye pain with nausea and blurred vision",
+        "I have pressure in my eye with headache",
+        "sudden eye pain and vision loss",
+        "I see halos around lights with eye pain",
+        "severe eye pain and nausea",
+        "eye pressure headache and blurred vision",
+        "glaucoma symptoms eye pain",
+        "I have increased eye pressure",
+        "eye pain redness and vision problems",
+        "I suddenly lost vision in one eye with pain",
+        "sharp eye pain with vomiting",
+        "tunnel vision and eye pressure",
+        "I have optic nerve damage symptoms",
+        "loss of peripheral vision with eye pain",
+        "halos around lights and eye pain"
+      ],
+      "responses": "You may have Glaucoma. It is a group of eye conditions that damage the optic nerve, often caused by abnormally high pressure in the eye.<br>Recommended actions:<br>1. See an ophthalmologist immediately \u2014 this can be a medical emergency.<br>2. Do not delay treatment as it can lead to permanent vision loss.<br>3. Eye drops, laser treatment, or surgery may be needed.",
+      "Precaution": "To manage glaucoma:<br>1. Regular eye pressure checks (tonometry).<br>2. Take prescribed eye drops consistently.<br>3. Protect eyes from injury.<br>4. Avoid activities that increase eye pressure (like heavy lifting).",
+      "description": "A condition that damages the optic nerve, often due to high intraocular pressure. Can cause vision loss if untreated.",
+      "precautions": "1. Regular eye exams. 2. Take prescribed medications. 3. Monitor eye pressure. 4. Seek immediate care for sudden vision loss."
+    },
+    {
+      "tag": "Uveitis",
+      "patterns": [
+        "eye pain redness and sensitivity to light",
+        "I have eye inflammation with blurred vision",
+        "my eye hurts and is sensitive to light",
+        "eye redness pain and floaters in vision",
+        "I have uveitis symptoms",
+        "eye pain light sensitivity and redness",
+        "blurred vision with eye pain and redness",
+        "I have inflamed eye with photophobia",
+        "eye ache with vision changes and redness",
+        "I have severe eye pain with light hurting my eyes"
+      ],
+      "responses": "You may have Uveitis. It is an inflammation of the uvea, the middle layer of the eye, which can cause pain, redness, and vision problems.<br>Recommended actions:<br>1. Consult an ophthalmologist urgently.<br>2. Steroid eye drops or other anti-inflammatory medications may be prescribed.<br>3. Prompt treatment is essential to prevent vision loss.",
+      "Precaution": "To manage uveitis:<br>1. Seek immediate eye care \u2014 do not ignore eye pain.<br>2. Complete the full course of prescribed medication.<br>3. Wear sunglasses to reduce light sensitivity.<br>4. Regular follow-ups with an eye specialist.",
+      "description": "Inflammation of the uvea (middle layer of the eye) causing eye pain, redness, blurred vision, and light sensitivity.",
+      "precautions": "1. See an ophthalmologist immediately. 2. Use prescribed anti-inflammatory drops. 3. Wear sunglasses outdoors. 4. Monitor for changes in vision."
     }
   ]
 }

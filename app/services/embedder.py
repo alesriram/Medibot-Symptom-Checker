@@ -167,7 +167,7 @@ class EmbedderClassifier:
 
         self._ready = self._backend is not None
 
-    def predict(self, text: str):
+    def predict(self, text: str, apply_anchor_fn=None):
         """
         Returns:
             (tag, score, alternatives, method)
@@ -175,6 +175,9 @@ class EmbedderClassifier:
             score        : float — similarity score [0, 1]
             alternatives : list of (tag, pct_int) tuples
             method       : str   — 'sentence_transformer' | 'tfidf' | 'tfidf_fallback' | 'none'
+
+        apply_anchor_fn : optional callable(text, intent_scores) -> intent_scores
+            Used to apply keyword-anchor boosting / penalising before picking the best tag.
         """
         if not self._ready:
             return None, 0.0, [], "none"
@@ -182,7 +185,9 @@ class EmbedderClassifier:
         primary_method = self._backend.method
 
         try:
-            tag, score, alternatives = self._run_backend(self._backend, text)
+            tag, score, alternatives = self._run_backend(
+                self._backend, text, apply_anchor_fn=apply_anchor_fn
+            )
             return tag, score, alternatives, primary_method
 
         except Exception as exc:
@@ -194,7 +199,9 @@ class EmbedderClassifier:
         # Fallback to TF-IDF if primary (ST) crashed mid-request
         if self._tfidf_fallback and self._backend is not self._tfidf_fallback:
             try:
-                tag, score, alternatives = self._run_backend(self._tfidf_fallback, text)
+                tag, score, alternatives = self._run_backend(
+                    self._tfidf_fallback, text, apply_anchor_fn=apply_anchor_fn
+                )
                 return tag, score, alternatives, "tfidf_fallback"
             except Exception as exc2:
                 log.error("TF-IDF fallback also failed: %s", exc2)
@@ -202,7 +209,7 @@ class EmbedderClassifier:
         return None, 0.0, [], "none"
 
     @staticmethod
-    def _run_backend(backend, text: str):
+    def _run_backend(backend, text: str, apply_anchor_fn=None):
         sims, tags = backend.similarity(text)
 
         intent_scores = {}
@@ -210,6 +217,10 @@ class EmbedderClassifier:
             s = float(sim)
             if tag not in intent_scores or s > intent_scores[tag]:
                 intent_scores[tag] = s
+
+        # Apply anchor boosting / penalising if provided
+        if apply_anchor_fn is not None:
+            intent_scores = apply_anchor_fn(text, intent_scores)
 
         sorted_intents = sorted(intent_scores.items(), key=lambda x: x[1], reverse=True)
         best_tag, best_score = sorted_intents[0]
