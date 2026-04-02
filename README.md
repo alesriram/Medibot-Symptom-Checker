@@ -55,9 +55,6 @@ medibot/
 │   └── utils/
 │       └── health.py
 ├── intents.json
-├── model.py
-├── nltk_utils.py
-├── train.py
 ├── main.py
 ├── database.py
 ├── requirements.txt
@@ -72,7 +69,7 @@ medibot/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/medibot.git
+git clone https://github.com/alesriram/Medibot-Symptom-Checker
 cd medibot
 ```
 
