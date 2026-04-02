@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: medibot
+    env: python
+    plan: free
+
+    buildCommand: |
+      pip install --upgrade pip && pip install -r requirements.txt && python -c "import nltk; nltk.download('punkt_tab'); nltk.download('punkt'); nltk.download('wordnet')"
+
+    startCommand: "gunicorn main:app --workers 1 --threads 2"
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: MEDIBOT_SECRET_KEY
+        generateValue: true
+      - key: FLASK_DEBUG
+        value: false
+      - key: NLTK_DATA
+        value: /tmp/nltk_data
+      - key: MEDIBOT_FORCE_TFIDF
+        value: true

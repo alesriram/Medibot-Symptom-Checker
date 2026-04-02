@@ -1,0 +1,76 @@
+# ── Virtual Environment ──────────────────────────────────
+venv/
+env/
+.venv/
+
+# ── Python Cache ─────────────────────────────────────────
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache
+
+# ── Environment Variables ────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Flask / App Specific ─────────────────────────────────
+instance/
+flask_session/
+
+# ── Database Files ───────────────────────────────────────
+*.db
+*.sqlite
+*.sqlite3
+
+# ── ML Model Cache (Sentence Transformers / HuggingFace) ─
+.cache/
+sentence_transformers/
+huggingface/
+models/
+*.pt
+*.bin
+*.h5
+*.pkl
+*.joblib
+
+# ── NLTK Data ────────────────────────────────────────────
+nltk_data/
+
+# ── Logs ─────────────────────────────────────────────────
+*.log
+logs/
+
+# ── OS Files ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDE / Editor ─────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# ── Jupyter ──────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb
+
+# ── Testing ──────────────────────────────────────────────
+.coverage
+htmlcov/
+.pytest_cache/
+test_results/
+
+# ── Build / Packaging ────────────────────────────────────
+dist/
+build/
+*.egg-info/
+*.egg
+
+# ── Temporary Files ──────────────────────────────────────
+*.tmp
+*.temp
+*.bak
