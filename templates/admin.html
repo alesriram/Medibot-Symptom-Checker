@@ -125,17 +125,17 @@
       <div class="admin-stat-grid">
         <div class="admin-stat">
           <div class="label">Total Diseases</div>
-          <div class="value">86+</div>
+          <div class="value">93+</div>
           <div class="sub">In intents.json</div>
         </div>
         <div class="admin-stat">
           <div class="label">Training Patterns</div>
-          <div class="value">2100+</div>
+          <div class="value">2154+</div>
           <div class="sub">Symptom examples</div>
         </div>
         <div class="admin-stat">
           <div class="label">Avg Patterns</div>
-          <div class="value">23.3</div>
+          <div class="value">23.2</div>
           <div class="sub">Per disease</div>
         </div>
         <div class="admin-stat">
@@ -146,7 +146,7 @@
         <div class="admin-stat">
           <div class="label">Model Status</div>
           <div class="value" style="font-size:1rem;color:#22c55e">✅ Active</div>
-          <div class="sub">BiLSTM 2-layer</div>
+          <div class="sub">MiniLM + TF-IDF</div>
         </div>
       </div>
 
@@ -173,12 +173,12 @@
           <div class="mb-card-header"><i class="fas fa-info-circle" style="color:var(--primary)"></i><strong style="font-size:0.9rem">System Info</strong></div>
           <div class="mb-card-body" style="font-size:0.85rem">
             <table style="width:100%;border-collapse:collapse">
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Model Type</td><td style="font-weight:600">BiLSTM (2 layers)</td></tr>
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Hidden Size</td><td style="font-weight:600">256 units</td></tr>
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Framework</td><td style="font-weight:600">PyTorch + Flask</td></tr>
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Dataset Size</td><td style="font-weight:600">2100+ patterns</td></tr>
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Confidence Threshold</td><td style="font-weight:600">70% (diseases)</td></tr>
-              <tr><td style="padding:6px 0;color:var(--text-muted)">Version</td><td style="font-weight:600">2.0 (Fixed)</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Model Type</td><td style="font-weight:600">SentenceTransformer (MiniLM-L6-v2)</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Embedding Dim</td><td style="font-weight:600">384-dim vectors</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Framework</td><td style="font-weight:600">sentence-transformers + sklearn + Flask</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Dataset Size</td><td style="font-weight:600">2154+ patterns</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Confidence Threshold</td><td style="font-weight:600">42% medical / 30% conv</td></tr>
+              <tr><td style="padding:6px 0;color:var(--text-muted)">Fallback</td><td style="font-weight:600">TF-IDF (cosine similarity)</td></tr>
             </table>
             <div class="mb-alert mb-alert-info" style="margin-top:12px">
               <i class="fas fa-info-circle"></i>
