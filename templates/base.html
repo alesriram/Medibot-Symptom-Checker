@@ -1058,6 +1058,19 @@
       return;
     }
 
+    // ── Name detection: intercept "my name is X" / "i am X" / "call me X" ──
+    const nameMatch = text.match(/(?:my\s+name\s+is|i\s+am|i'm|call\s+me|this\s+is)\s+([a-zA-Z]{2,30})\b/i);
+    if (nameMatch) {
+      const userName = nameMatch[1].charAt(0).toUpperCase() + nameMatch[1].slice(1).toLowerCase();
+      window._medibotUserName = userName;
+      showTyping();
+      setTimeout(() => {
+        removeTyping();
+        addBotBubble(`Nice to meet you, <strong>${esc(userName)}</strong>! 😊 How can I help you today? You can describe your symptoms and I'll try to assist you.`);
+      }, 600);
+      return;
+    }
+
     // ── Normal message flow ──
     showTyping();
     isThinking = true;
@@ -1119,6 +1132,11 @@
     chatLog.push({ role: 'bot', tag, msg: answer[1] });
 
     if (tag === 'not_understand') { addBotBubble(`🤔 ${answer[1]}`); return; }
+    if (tag === 'name') {
+      const nm = answer[1] && answer[1].match(/meet you,\s+([A-Za-z]+)/i);
+      if (nm) window._medibotUserName = nm[1];
+      addBotBubble(answer[1]); return;
+    }
     if (CONV.includes(tag))       { addBotBubble(answer[1]); return; }
     if (tag === 'center') {
       addBotBubble("🏥 <strong>Nearest Medical Centres to You:</strong>");

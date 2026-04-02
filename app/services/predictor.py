@@ -91,10 +91,27 @@ def _apply_anchor_rules(text: str, intent_scores: dict) -> dict:
     return adjusted
 
 
+_NAME_PATTERNS = re.compile(
+    r"^\s*(?:my\s+name\s+is|i\s+am|i'm|call\s+me|this\s+is)\s+([a-zA-Z]{2,30})\s*[.!]?\s*$",
+    re.IGNORECASE
+)
+
 def predict(text: str) -> dict:
     text = re.sub(r"<[^>]+>", "", text).strip()
     if not text:
         return _not_understood("Please type something so I can help.")
+
+    # ── Name introduction detection ──
+    name_match = _NAME_PATTERNS.match(text)
+    if name_match:
+        user_name = name_match.group(1).capitalize()
+        return {
+            "tag": "name",
+            "response": ["name", f"Nice to meet you, {user_name}! 😊 How can I help you today? Please describe your symptoms."],
+            "confidence": 1.0,
+            "method": "rule",
+            "alternatives": [],
+        }
 
     try:
         from app.services.embedder import EmbedderClassifier
